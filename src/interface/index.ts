@@ -13,4 +13,11 @@ interface IJobDetails {
   logoUrl: string;
 }
 
-export type { IJobDetails };
+interface IAllFilters {
+  role: string;
+  experience: number;
+  minSalary: number;
+  search: string;
+}
+
+export type { IJobDetails, IAllFilters };

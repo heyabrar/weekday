@@ -38,10 +38,14 @@ const JobCard = ({ data }: Props) => {
       <h6 className="font-normal text-[15px] leading-[30px]">
         {data?.jobDetailsFromCompany}
       </h6>
-      <h6 className="text-[16px] mt-3 text-gray-500 font-semibold">
-        Minimum Experience
-      </h6>
-      <h6 className="font-normal text-[15px] ">{data?.minExp} Years</h6>
+      <div>
+        <h6 className="text-[16px] mt-3 text-gray-500 font-semibold">
+          Minimum Experience
+        </h6>
+        <h6 className="font-normal text-[15px] ">
+          {data?.minExp ? data?.minExp + " Years" : "Not disclosed"}
+        </h6>
+      </div>
 
       <button className="border w-full p-2 bg-[#55eec3] rounded-md mt-3">
         ⚡ Easy Apply
