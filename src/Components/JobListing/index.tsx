@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { getJobListing } from "@/pages/api";
 import { IJobDetails } from "@/interface";
 import JobCard from "../JobCard";
+import JobCardSkeleton from "../Skeleton/JobCardSkeleton";
 
 const JobListing = () => {
   const [jobsList, setJobList] = useState<IJobDetails[]>([]);
@@ -19,7 +20,6 @@ const JobListing = () => {
       setHasMore(newJobsList.length > 0);
       offsetRef.current += 12;
     } catch (error) {
-      console.log(error);
       setIsLoading(false);
     } finally {
       setIsLoading(false);
@@ -51,12 +51,17 @@ const JobListing = () => {
 
   return (
     <div>
-      <div className="grid lg:grid-cols-3 gap-x-8 gap-y-10">
+      <div className="grid gap-x-8 gap-y-10 md:!grid-cols-2 lg:!grid-cols-3 ">
         {jobsList?.map((item) => {
           return <JobCard key={item?.jdUid} data={item} />;
         })}
       </div>
-      {isLoading && <p>Loading...</p>}
+
+      {isLoading && (
+        <div className="mt-4">
+          <JobCardSkeleton />
+        </div>
+      )}
       {!isLoading && !hasMore && <p>No more jobs to load.</p>}
       <div className="end-of-page" style={{ height: "10px" }}></div>
     </div>

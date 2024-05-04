@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { IJobDetails } from "@/interface";
+import { handleFormatSalary } from "@/utils/helper/helperFunctions";
 
 type Props = {
   data: IJobDetails;
@@ -26,13 +27,22 @@ const JobCard = ({ data }: Props) => {
         </div>
       </div>
       <h6 className="mt-2 text-gray-600 text-[15px]">
-        Estimated Salary: ₹{data?.minJdSalary} - {data?.maxJdSalary} LPA ✅
+        Estimated Salary:{" "}
+        {handleFormatSalary({
+          minSalary: data?.minJdSalary || 0,
+          maxSalary: data?.maxJdSalary,
+        })}
       </h6>
       <h6 className="font-medium text-[17px] mt-4">About Company</h6>
       <h6 className="font-bold text-[17px]">About Us</h6>
       <h6 className="font-normal text-[15px] leading-[30px]">
         {data?.jobDetailsFromCompany}
       </h6>
+      <h6 className="text-[16px] mt-3 text-gray-500 font-semibold">
+        Minimum Experience
+      </h6>
+      <h6 className="font-normal text-[15px] ">{data?.minExp} Years</h6>
+
       <button className="border w-full p-2 bg-[#55eec3] rounded-md mt-3">
         ⚡ Easy Apply
       </button>
