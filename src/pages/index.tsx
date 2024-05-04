@@ -1,13 +1,10 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
-import JobCard from "@/Components/JobCard";
-
-const inter = Inter({ subsets: ["latin"] });
+import JobListing from "@/Components/JobListing";
 
 export default function Home() {
   return (
-    <div>
-      <JobCard />
+    <div className="w-[95%] lg:w-[85%] mx-auto">
+      <JobListing />
     </div>
   );
 }

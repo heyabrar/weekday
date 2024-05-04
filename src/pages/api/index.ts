@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const getJobListing = () => {
-  const requestData = {
-    limit: 10,
-    offset: 0,
-  };
+const getJobListing = ({
+  requestData,
+}: {
+  requestData: { limit: number; offset: number };
+}) => {
   return axios.post(
     "https://api.weekday.technology/adhoc/getSampleJdJSON",
     requestData
